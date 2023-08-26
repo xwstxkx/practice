@@ -1,8 +1,7 @@
 package com.protasevich.practice.model;
 
-import com.protasevich.practice.entity.DepartmentEntity;
+import com.ibm.icu.text.Transliterator;
 import com.protasevich.practice.entity.EmployeeEntity;
-import com.protasevich.practice.entity.ProjectEntity;
 import lombok.Data;
 
 import java.util.ArrayList;
@@ -18,8 +17,6 @@ public class EmployeeModel {
     private Long departmentId;
     private Long projectId;
     private String email;
-    private DepartmentEntity department;
-    private ProjectEntity project;
 
     public static EmployeeModel toModel(EmployeeEntity entity) {
         EmployeeModel employeeModel = new EmployeeModel();
@@ -32,6 +29,7 @@ public class EmployeeModel {
         employeeModel.setProjectId(entity.getProject().getId());
         return employeeModel;
     }
+
     public static List<EmployeeModel> toListModel(List<EmployeeEntity> employeeEntities) {
         List<EmployeeModel> employeeModelList = new ArrayList<>();
         for (EmployeeEntity employeeEntity : employeeEntities) {
@@ -47,10 +45,9 @@ public class EmployeeModel {
         employeeEntity.setSurname(model.getSurname());
         employeeEntity.setDate(model.getDate());
         employeeEntity.setEmail(EmployeeModel.toEmail(model));
-        employeeEntity.setDepartment(model.getDepartment());
-        employeeEntity.setProject(model.getProject());
         return employeeEntity;
     }
+
     public static List<EmployeeEntity> toListEntity(List<EmployeeModel> employeeModels) {
         List<EmployeeEntity> employeeModelList = new ArrayList<>();
         for (EmployeeModel employeeModel : employeeModels) {
@@ -60,6 +57,11 @@ public class EmployeeModel {
     }
 
     public static String toEmail(EmployeeModel model) {
-        return model.getName().toLowerCase() + "." + model.getSurname().toLowerCase() + "@gmail.com";
+        String st = "привет мир";
+        String CYRILLIC_TO_LATIN = "Russian-Latin/BGN";
+        Transliterator toLatinTrans = Transliterator.getInstance(CYRILLIC_TO_LATIN);
+        String name = toLatinTrans.transliterate(model.getName().toLowerCase());
+        String surname = toLatinTrans.transliterate(model.getSurname().toLowerCase());
+        return name + "." + surname + "@gmail.com";
     }
 }
