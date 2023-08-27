@@ -20,7 +20,7 @@ public class DepartmentController {
     @PostMapping("/save")
     @Operation(summary = "Сохранение одного отдела")
     public ResponseEntity save(@RequestBody DepartmentModel model)
-        throws ParametersNotSpecified {
+            throws ParametersNotSpecified {
         departmentService.saveDepartment(model);
         return ResponseEntity.ok("Отдел был успешно сохранён!");
     }
@@ -44,7 +44,7 @@ public class DepartmentController {
 
     @DeleteMapping("/{id}")
     @Operation(summary = "Удаление отдела")
-    public ResponseEntity delete(@PathVariable Long id) throws ObjectNotFound{
+    public ResponseEntity delete(@PathVariable Long id) throws ObjectNotFound {
         departmentService.deleteDepartment(id);
         return ResponseEntity.ok("Отдел был успешно удалён");
     }
@@ -52,7 +52,7 @@ public class DepartmentController {
     @PutMapping("/put")
     @Operation(summary = "Обновление информации по отделу")
     public ResponseEntity put(@RequestBody DepartmentModel departmentModel)
-        throws ParametersNotSpecified {
+            throws ParametersNotSpecified {
         departmentService.saveDepartment(departmentModel);
         return ResponseEntity.ok("Отдел был успешно сохранён!");
     }

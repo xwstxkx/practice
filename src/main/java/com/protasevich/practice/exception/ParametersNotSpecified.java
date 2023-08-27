@@ -1,4 +1,4 @@
 package com.protasevich.practice.exception;
 
-public class ParametersNotSpecified extends Exception{
+public class ParametersNotSpecified extends Exception {
 }

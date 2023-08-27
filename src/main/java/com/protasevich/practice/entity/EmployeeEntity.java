@@ -2,6 +2,7 @@ package com.protasevich.practice.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -16,13 +17,16 @@ public class EmployeeEntity {
     private Long id;
 
     @Column(name = "name")
+    @NotBlank
     private String name;
 
     @Column(name = "surname")
+    @NotBlank
     private String surname;
 
     @Column(name = "date")
     @DateTimeFormat(fallbackPatterns = "dd.MM.yyyy")
+    @NotBlank
     private String date;
 
     @Column(name = "email")

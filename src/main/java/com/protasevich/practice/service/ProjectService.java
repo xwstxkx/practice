@@ -4,6 +4,7 @@ import com.protasevich.practice.entity.ProjectEntity;
 import com.protasevich.practice.exception.ObjectNotFound;
 import com.protasevich.practice.exception.ParametersNotSpecified;
 import com.protasevich.practice.model.ProjectModel;
+import com.protasevich.practice.repository.EmployeeRepo;
 import com.protasevich.practice.repository.ProjectRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,6 +18,8 @@ public class ProjectService {
 
     @Autowired
     private ProjectRepo projectRepo;
+    @Autowired
+    private EmployeeRepo employeeRepo;
 
     public void save(ProjectModel model)
             throws ParametersNotSpecified {

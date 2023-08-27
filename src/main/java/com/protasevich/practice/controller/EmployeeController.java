@@ -19,9 +19,11 @@ public class EmployeeController {
 
     @PostMapping("/save")
     @Operation(summary = "Регистрация одного работника")
-    public ResponseEntity save(@RequestBody EmployeeModel model)
-            throws ParametersNotSpecified {
-        service.save(model);
+    public ResponseEntity save(@RequestBody EmployeeModel model,
+                               @RequestParam Long departmentId,
+                               @RequestParam Long projectId)
+            throws ParametersNotSpecified, ObjectNotFound {
+        service.save(model, departmentId, projectId);
         return ResponseEntity.ok("Работник был успешно сохранён!");
     }
 
@@ -51,9 +53,11 @@ public class EmployeeController {
 
     @PutMapping("/put")
     @Operation(summary = "Обновление информации по работнику")
-    public ResponseEntity put(@RequestBody EmployeeModel model)
-            throws ParametersNotSpecified {
-        service.save(model);
+    public ResponseEntity put(@RequestBody EmployeeModel model,
+                              @RequestParam Long departmentId,
+                              @RequestParam Long projectId)
+            throws ParametersNotSpecified, ObjectNotFound {
+        service.save(model, departmentId, projectId);
         return ResponseEntity.ok("Работник был успешно обновлён!");
     }
 }

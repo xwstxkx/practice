@@ -23,6 +23,7 @@ public class DepartmentModel {
         }
         return departmentModel;
     }
+
     public static List<DepartmentModel> toListModel(List<DepartmentEntity> departmentEntities) {
         List<DepartmentModel> employeeModelList = new ArrayList<>();
         for (DepartmentEntity departmentEntity : departmentEntities) {
@@ -37,6 +38,7 @@ public class DepartmentModel {
         departmentEntity.setName(model.getName());
         return departmentEntity;
     }
+
     public static List<DepartmentEntity> toListEntity(List<DepartmentModel> departmentModels) {
         List<DepartmentEntity> employeeModelList = new ArrayList<>();
         for (DepartmentModel departmentModel : departmentModels) {

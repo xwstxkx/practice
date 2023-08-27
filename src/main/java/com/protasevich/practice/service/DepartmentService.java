@@ -19,7 +19,7 @@ public class DepartmentService {
     private DepartmentRepo departmentRepo;
 
     public void saveDepartment(DepartmentModel departmentModel)
-            throws ParametersNotSpecified{
+            throws ParametersNotSpecified {
         if (departmentModel.getName() == null) throw new ParametersNotSpecified();
         departmentRepo.save(DepartmentModel.toEntity(departmentModel));
     }
@@ -29,12 +29,12 @@ public class DepartmentService {
                 .orElseThrow(ObjectNotFound::new));
     }
 
-    public List<DepartmentModel> getAll(PageRequest pageRequest){
+    public List<DepartmentModel> getAll(PageRequest pageRequest) {
         Page<DepartmentEntity> page = departmentRepo.findAll(pageRequest);
         return DepartmentModel.toListModel(page.getContent());
     }
 
-    public void deleteDepartment(Long id) throws ObjectNotFound{
+    public void deleteDepartment(Long id) throws ObjectNotFound {
         departmentRepo.delete(departmentRepo.findById(id).orElseThrow(ObjectNotFound::new));
     }
 }
