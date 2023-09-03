@@ -21,7 +21,7 @@ public class DepartmentEntity {
     @NotBlank(message = "Пожалуйста, укажите название отдела")
     private String name;
 
-    @OneToMany(cascade = CascadeType.DETACH,
+    @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.LAZY,
             mappedBy = "department")
     private List<EmployeeEntity> employees;

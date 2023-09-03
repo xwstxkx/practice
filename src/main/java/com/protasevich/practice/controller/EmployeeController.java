@@ -28,7 +28,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Получение отдного работника")
+    @Operation(summary = "Получение одного работника")
     public ResponseEntity get(@PathVariable Long id) throws ObjectNotFound {
         return ResponseEntity.ok(service.get(id));
     }

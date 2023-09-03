@@ -24,7 +24,7 @@ public class ProjectEntity {
     @DateTimeFormat(fallbackPatterns = "dd.MM.yyyy")
     private String Date;
 
-    @OneToMany(cascade = CascadeType.ALL,
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REFRESH},
             fetch = FetchType.LAZY,
             mappedBy = "project")
     private List<EmployeeEntity> employees;
